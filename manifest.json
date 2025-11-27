@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Don't Repeat Typing",
+  "description": "Save commands and insert them with slash commands.",
+  "version": "0.1.0",
+  "icons": {
+    "16": "align-left.png",
+    "48": "align-left.png",
+    "128": "align-left.png"
+  },
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "options_page": "options/options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ],
+      "js": [
+        "dist/storage/commandStore.js",
+        "dist/content/palette.js",
+        "dist/content/listener.js"
+      ],
+      "css": [
+        "dist/content/palette.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

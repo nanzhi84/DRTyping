@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Don't Repeat Typing Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="options">
+      <header class="options__header">
+        <h1>Don't Repeat Typing</h1>
+        <p>Manage reusable commands and site whitelist.</p>
+      </header>
+
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Commands</h2>
+          <div class="panel__actions">
+            <button id="export-commands" type="button">Export JSON</button>
+            <label class="import-label">
+              Import JSON
+              <input id="import-file" type="file" accept="application/json" />
+            </label>
+          </div>
+        </div>
+
+        <form id="command-form" class="form">
+          <input type="hidden" name="commandId" id="command-id" />
+          <label>
+            Command Name
+            <input
+              id="command-name"
+              name="commandName"
+              type="text"
+              required
+              placeholder="/summary"
+              autocomplete="off"
+            />
+          </label>
+          <label>
+            Prompt Content
+            <textarea
+              id="command-content"
+              name="commandContent"
+              rows="5"
+              required
+              placeholder="Paste the prompt text to insert"
+            ></textarea>
+          </label>
+          <div class="form__actions">
+            <button type="submit" id="save-command">Save Command</button>
+            <button type="button" id="reset-command">Reset</button>
+          </div>
+        </form>
+
+        <ul id="command-list" class="list"></ul>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Site Whitelist</h2>
+        </div>
+        <form id="whitelist-form" class="form form--compact">
+          <label>
+            Hostname
+            <input
+              id="hostname-input"
+              name="hostname"
+              type="text"
+              required
+              placeholder="example.com"
+              autocomplete="off"
+            />
+          </label>
+          <div class="form__actions">
+            <button type="submit">Add Hostname</button>
+          </div>
+        </form>
+        <ul id="whitelist" class="list"></ul>
+      </section>
+    </main>
+    <script type="module" src="../dist/storage/commandStore.js"></script>
+    <script type="module" src="../dist/options.js"></script>
+  </body>
+</html>
+

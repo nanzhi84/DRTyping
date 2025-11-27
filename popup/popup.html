@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompt Palette Toggle</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <header class="popup__header">
+        <h1>Don’t Repeat Typing</h1>
+        <p class="popup__subtitle">Control availability on this site.</p>
+      </header>
+
+      <section class="popup__section">
+        <p class="popup__host-label">Current site</p>
+        <p id="host" class="popup__host">Loading…</p>
+      </section>
+
+      <section class="popup__section">
+        <label class="toggle" id="toggle-label">
+          <span class="toggle__text">Enable slash commands here</span>
+          <div class="toggle__control">
+            <input type="checkbox" id="site-toggle" />
+            <span class="toggle__slider" aria-hidden="true"></span>
+          </div>
+        </label>
+        <p id="status" class="popup__status">Checking whitelist…</p>
+      </section>
+
+      <button id="open-options" class="popup__button">Manage commands</button>
+    </main>
+
+    <script type="module" src="../dist/storage/commandStore.js"></script>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

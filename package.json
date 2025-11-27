@@ -1,0 +1,13 @@
+{
+  "name": "prompt-palette",
+  "version": "0.1.0",
+  "description": "Chrome extension for reusable prompts triggered by slash commands.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.266",
+    "typescript": "^5.4.0"
+  }
+}
+
