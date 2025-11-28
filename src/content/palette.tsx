@@ -58,6 +58,10 @@ class CommandPalette {
     this.list.innerHTML = "";
   }
 
+  containsNode(node: Node): boolean {
+    return this.root.contains(node);
+  }
+
   handleKey(event: KeyboardEvent): boolean {
     if (!this.isVisible) {
       return false;
@@ -124,7 +128,11 @@ class CommandPalette {
         item.classList.add("prompt-palette__item--active");
         this.root.setAttribute("aria-activedescendant", item.id);
       }
-      item.addEventListener("mouseenter", () => {
+      item.addEventListener("mousemove", () => {
+        if (this.activeIndex === index) {
+          return;
+        }
+        // Only update selection when the user actively moves the pointer
         this.activeIndex = index;
         this.render();
       });

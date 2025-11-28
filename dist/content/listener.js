@@ -318,7 +318,14 @@ const handleClick = (event) => {
         return;
     }
     const target = event.target;
-    if (target instanceof Node && session.element.contains(target)) {
+    if (!(target instanceof Node)) {
+        resetSession();
+        return;
+    }
+    if (session.element.contains(target)) {
+        return;
+    }
+    if (palette?.containsNode(target)) {
         return;
     }
     resetSession();

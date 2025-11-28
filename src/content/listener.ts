@@ -38,6 +38,7 @@ interface PaletteInstance {
   show(commands: Command[], anchorRect: DOMRect): void;
   hide(): void;
   handleKey(event: KeyboardEvent): boolean;
+  containsNode(node: Node): boolean;
 }
 
 type PaletteConstructor = new (config: {
@@ -403,7 +404,14 @@ const handleClick = (event: MouseEvent): void => {
     return;
   }
   const target = event.target;
-  if (target instanceof Node && session.element.contains(target)) {
+  if (!(target instanceof Node)) {
+    resetSession();
+    return;
+  }
+  if (session.element.contains(target)) {
+    return;
+  }
+  if (palette?.containsNode(target)) {
     return;
   }
   resetSession();
