@@ -142,6 +142,14 @@ class CommandPalette {
       item.addEventListener("click", () => this.onSelect(command));
       this.list.appendChild(item);
     });
+    this.ensureActiveItemVisible();
+  }
+
+  private ensureActiveItemVisible(): void {
+    const activeItem = this.list.querySelector(".prompt-palette__item--active");
+    if (activeItem instanceof HTMLElement) {
+      activeItem.scrollIntoView({ block: "nearest", inline: "nearest" });
+    }
   }
 
   private positionAt(anchorRect: DOMRect): void {
